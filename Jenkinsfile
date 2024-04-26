@@ -2,14 +2,39 @@ pipeline {
     agent any
 
     stages {
-       
-        stage('Build') {
+       stage('Build') {
             steps {
-                bat 'mvn clean install'
+                bat 'mvn -f C:\\Users\\asas3\\OneDrive\\Desktop\\753\\Code\\DeakinWeb\\753-6\\pom.xml clean install'
             }
         }
 
+        stage('Unit and Integration Tests') {
+            steps {
+                bat 'mvn -f C:\\Users\\asas3\\OneDrive\\Desktop\\753\\Code\\DeakinWeb\\753-6\\pom.xml test'
+            }
+        }
 
+        stage('Code Analysis') {
+            steps {
+                bat 'mvn -f C:\\Users\\asas3\\OneDrive\\Desktop\\753\\Code\\DeakinWeb\\753-6\\pom.xml checkstyle:checkstyle'
+            }
+        }
+
+        stage('Security Scan') {
+            steps {
+                bat 'mvn -f C:\\Users\\asas3\\OneDrive\\Desktop\\753\\Code\\DeakinWeb\\753-6\\pom.xml verify'
+            }
+        }
+
+        stage('Integration Tests on Staging') {
+            steps {
+                script {
+                    echo 'Running Integration Tests on Staging Environment'
+                    echo 'Add your specific integration test steps here'
+                
+                }
+            }
+        }
     }
     post {
         success {
