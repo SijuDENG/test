@@ -40,13 +40,13 @@ pipeline {
     }
     post {
         success {
-            emailext 
+            emailext attachLog: true,
                     body: 'Security Scan stage completed successfully.',
                     subject: 'Security Scan: Success',
                     to: 'asas385@live.com'
             }
         failure {
-            emailext 
+            emailext attachLog: true,
                     body: 'Security Scan stage failed.',
                     subject: 'Security Scan: Failure',
                     to: 'asas385@live.com'
