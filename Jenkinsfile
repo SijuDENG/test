@@ -38,15 +38,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production') {
-            steps {
-                script {
-                    echo 'Deploying to Production Environment'
-                    withCredentials([file(credentialsId: 'asdfasdf', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                                    }
-                }
-            }
-        }    
+ 
 
     }
     post {
