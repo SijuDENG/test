@@ -27,16 +27,6 @@ pipeline {
             }
         }
 
-        stage('Deploy to Staging') {
-            steps {
-                script {
-                    echo 'Deploying to Staging Environment'
-                    withCredentials([file(credentialsId: 'asdfasdf', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                
-                    }
-                }
-            }
-        }
 
         stage('Integration Tests on Staging') {
             steps {
